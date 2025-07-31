@@ -101,6 +101,7 @@ func run(modelName, audioPath string)(error) {
 }
 
 func main() {
+	fmt.Println("Starting transcription...")
 	if err := godotenv.Load("envfile"); err != nil {
       fmt.Println(err.Error())
       return
