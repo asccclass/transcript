@@ -3,10 +3,8 @@ package main
 import(
 	"os"
 	"fmt"
-	// "time"
-	// "strconv"
-	// "strings"
-	// "context"
+	"time"
+	"strconv"
 	"github.com/joho/godotenv"
 	whisper "github.com/ggerganov/whisper.cpp/bindings/go/pkg/whisper"
 )
@@ -73,7 +71,7 @@ func run(modelName, audioPath string)(error) {
 */		
   // 建立處理上下文
 
-/*
+
 	context.SetSplitOnWord(true)  // 啟用分段
 	MaxSegment := 0                // 默認為不限制段落長度
 	maxseg := os.Getenv("MaxSegment")
@@ -86,7 +84,7 @@ func run(modelName, audioPath string)(error) {
 		}
 		context.SetDuration(time.Duration(MaxSegment) * time.Second)
 	}
-*/		
+
 	// 執行轉錄
 	err = context.Process(audioData, nil, func(segment whisper.Segment) {
 		
@@ -100,23 +98,26 @@ func run(modelName, audioPath string)(error) {
    return nil
 }
 
+
 func main() {
-	fmt.Println("Starting transcription...")
+	fmt.Println("Starting transcription...")	
+	
 	if err := godotenv.Load("envfile"); err != nil {
       fmt.Println(err.Error())
       return
    }
+
 	audioPath := "D:\\transcript\\ex01.wav" // 替換為實際的音訊檔案路徑
 	if audioPath == "" {
 		fmt.Println("No audio file specified")
 		return
-	}
+	}	
 	// 設置轉錄參數
 	modelName := os.Getenv("ModelName")
 	if err := run(modelName, audioPath); err != nil {
 		fmt.Println("Error during transcription:", err)
 		return
 	}
+	
 	fmt.Println("Transcription completed successfully")
-	os.Exit(0)
 }

@@ -8,6 +8,6 @@ require (
 )
 
 // 如果需要本地路徑
-replace github.com/ggerganov/whisper.cpp => ../whisper.cpp
+// replace github.com/ggerganov/whisper.cpp => ../whisper.cpp
 
 // replace github.com/ggerganov/whisper.cpp/bindings/go => /path/to/whisper.cpp/bindings/go
