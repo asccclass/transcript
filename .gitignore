@@ -1,3 +1,4 @@
 envfile
 *.old
 *.swp
+*.exe
